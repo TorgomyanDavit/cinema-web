@@ -267,7 +267,7 @@ const movieSlice = createSlice({
 	changeMovie: (state, { payload: currentId }) => {
 		const foundItem = state.TendingNow.find(({ Id }: { Id: string }) => Id === currentId);
 		if (foundItem) {
-			localStorage.setItem("currentItemId",currentId)
+			sessionStorage.setItem("currentItemId",currentId)
 		  	state.Featured = foundItem;
 		} else {
 			// handle case

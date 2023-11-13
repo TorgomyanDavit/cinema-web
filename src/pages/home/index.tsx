@@ -6,30 +6,25 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { TendingNowItemType } from '../../store/slices/movie/type';
 import SimpleSlider from '../../component/slider/simpleSlider';
 import { changeMovie } from '../../store/slices/movie/movieSlice';
+import FeaturedVideoBlock from '../../component/feauteredVideoBlock';
 
 function HomePage() {
   const { Featured,TendingNow } = useAppSelector((state) => state.movieSlice );
-  const {Id,Category,MpaRating,ReleaseYear,Duration,Description} = Featured
   const dispatch = useAppDispatch()
   const filteredTendingNow = TendingNow.slice(0, 50);
   function handleChangeMovie(id:string) {
     dispatch(changeMovie(id))
   }
 
-
   useEffect(() => {
-    const currentItemId = localStorage.getItem("currentItemId")
+    const currentItemId = sessionStorage.getItem("currentItemId")
     dispatch(changeMovie(currentItemId))
   },[])
 
   console.log(TendingNow,"TendingNow")
   return (
     <div className='home_page'>
-      <p className='title'>{Category}</p>
-      <img className='mainTitle_img' src={MainTitleImg}/>
-      <p className='date_title'>{ReleaseYear} {MpaRating} {Duration}</p>
-      <p className='description'>{Description} {Id}</p>
-
+      <FeaturedVideoBlock lastFeaturedMovie={Featured}/>
       <div className='mainButtonContainer'>
         <button className='main_button'><BsFillPlayFill/><span>Play</span></button>
         <button className='main_button more_info'>More Info</button>
@@ -38,13 +33,7 @@ function HomePage() {
       <div className='move_item_container'>
         <p className='title'>Trending Now</p>
         <div className='item_parent'>
-          <SimpleSlider>
-            {filteredTendingNow?.map(({Id,CoverImage}:TendingNowItemType) => 
-            <div>
-              <button  onClick={() => handleChangeMovie(Id)} className={'items'} style={{backgroundImage: `url(${CoverImage})`}}></button>
-            </div>
-            )}
-          </SimpleSlider>
+          <SimpleSlider filteredTendingNow={filteredTendingNow} callBack={handleChangeMovie}/>
         </div>
       </div>
     </div>

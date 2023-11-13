@@ -9,13 +9,26 @@
     top: 0;
     width:167px;
     z-index: 1;
-    background: linear-gradient(to right, black 167px, rgba(0, 0, 0, 0.986) 100%);
     transition: 0.2s;
-    // background: linear-gradient(to right, #000000 0, #000000 157px, rgba(255, 87, 51, 0) 157px, rgba(255, 87, 51, 0));
+    &::after {
+        content: '';
+        position: fixed;
+        left: 167px;
+        transition: 0.5s;
+        top: 0;
+        z-index: -1;
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.979) 250px, rgba(0, 0, 0, 0.052) 100%);
+        pointer-events: none !important;
+    }
+    
     &:hover {
         opacity: 1;
-        box-shadow: 250px 0px 90px rgba(0, 0, 0, 0.719);
-        width:400px;
+        width: 400px;
+        &::after {
+            width:100%;
+        }
         .route {
             .name {
 
@@ -35,11 +48,14 @@
 
         border-radius: 50px;
         .menu_nav {
+            &::after {
+                display: block;
+            }
             .active {
                 border-radius: 12px !important;
+                width: 100%;
             }
         }
-
     }
     
     .menu_nav {
@@ -47,13 +63,12 @@
         flex-direction: column;
         justify-content: space-between;
         max-width: 370px;
-
         .route {
             display: flex;
             align-items: center;
             gap: 50px;
             text-decoration: none;
-            padding: 18px 3px;
+            padding: 18px 0px;
             height: 72px;
             .imgMain {
                 display: flex;
@@ -77,6 +92,7 @@
             outline: none;
             margin: 58px 0 42px;
             padding: 0;
+            cursor: pointer;
             .name {
                 font-weight: 100;
             }
@@ -91,6 +107,7 @@
         .active {
             background: #3B486D;
             border-radius: 50%;
+            width: 82px;
         }
     }
 
