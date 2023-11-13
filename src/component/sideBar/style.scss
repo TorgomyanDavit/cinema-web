@@ -1,0 +1,114 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 38px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width:167px;
+    z-index: 1;
+    background: linear-gradient(to right, black 167px, rgba(0, 0, 0, 0.986) 100%);
+    transition: 0.2s;
+    // background: linear-gradient(to right, #000000 0, #000000 157px, rgba(255, 87, 51, 0) 157px, rgba(255, 87, 51, 0));
+    &:hover {
+        opacity: 1;
+        box-shadow: 250px 0px 90px rgba(0, 0, 0, 0.719);
+        width:400px;
+        .route {
+            .name {
+
+                display: flex !important;
+            }
+        }
+
+        .user {
+            svg{
+                opacity: 1 !important;
+            }
+        }
+
+        .exit_and_lang_side {
+            display: flex;
+        }
+
+        border-radius: 50px;
+        .menu_nav {
+            .active {
+                border-radius: 12px !important;
+            }
+        }
+
+    }
+    
+    .menu_nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 370px;
+
+        .route {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            text-decoration: none;
+            padding: 18px 3px;
+            height: 72px;
+            .imgMain {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 82px;
+            }
+
+            .name {
+                color: #F1F1F1;
+                font-weight: bold;
+                font-size: 36px;
+                text-align: left;
+                white-space: nowrap;
+                display: none;
+            }
+        }
+        .search {
+            background: transparent;
+            border: none;
+            outline: none;
+            margin: 58px 0 42px;
+            padding: 0;
+            .name {
+                font-weight: 100;
+            }
+            
+        }
+        .user {
+            padding: 0;
+            svg{
+                opacity: 0;
+            }
+        }
+        .active {
+            background: #3B486D;
+            border-radius: 50%;
+        }
+    }
+
+    .exit_and_lang_side {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 26px;
+        gap: 24px;
+        .field {
+            cursor: pointer;
+            color: #858688;
+            font-weight: bold;
+            font-size: 24px;
+            border: none;
+            outline: none;
+            background: transparent;
+            white-space: nowrap;
+        }
+    }
+}

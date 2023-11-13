@@ -1,0 +1,111 @@
+.home_page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../../assets/FeaturedCoverImage.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
+    background-size: cover; /* Adjust as needed (cover, contain, etc.) */
+    background-repeat: no-repeat;
+    background-position: center center; /* Adjust the position as needed */
+    color: white;
+    padding-left: 167px;
+    padding-top: 80px;
+    gap: 20px;
+    .title {
+        font-size: 20px;
+        color: #858688;
+    }
+
+    .mainTitle_img {
+        height: 100px;
+        width: fit-content;
+    }
+
+    .date_title {
+        font-size: 22px;
+    }
+
+    .description {
+        font-size: 24px;
+        max-width:50%;
+    }
+
+
+    .mainButtonContainer {
+        display: flex;
+        gap: 18px;
+        .main_button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            width: 240px;
+            height: 72px;
+            border-radius: 40px;
+            background: white;
+            border: none;
+            outline: none;
+            color: #0C0C0C;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        .more_info {
+            color: #F1F1F1;
+            background: transparent linear-gradient(128deg, #2727F5 0%, #001671 100%) 0% 0% no-repeat padding-box;
+        }
+    }
+
+    .move_item_container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        // padding-left: 167px;
+        margin-top: auto;
+
+        .title {
+            color: #F1F1F1;
+            font-size: 32px;
+        }
+        .item_parent {
+            gap: 8px;
+            margin-bottom: 10px;
+            .items {
+                width: 200px;
+                height: 278px;
+                margin: 0 5px;
+                cursor: pointer;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                border: none;
+                outline: none;
+                // &:hover {
+                //     &::after {
+                //         background: rgba(0, 0, 0, 0.721);
+                //     }
+                // }
+    
+                // &::after {
+                //     content: "";
+                //     position: absolute;
+                //     left: 0;
+                //     top: 0;
+                //     width: 100%;
+                //     height: 100%;
+                //     background: rgba(0, 0, 0, 0.366);
+                //     z-index: 0;
+                //     border-radius: 50px;
+                // }
+            }
+        }
+    }
+}
+
+.slick-slider {
+    .slick-arrow {
+        display: none !important;
+    }
+}
+
+
