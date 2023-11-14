@@ -264,10 +264,19 @@ const movieSlice = createSlice({
   name: "movieSlice",
   initialState,	
   reducers: {
-	changeMovie: (state, { payload: currentId }) => {
-		const foundItem = state.TendingNow.find(({ Id }: { Id: string }) => Id === currentId);
+	changeMovie: (state, { payload }) => {
+		const {currentItemId,sortedItems} = payload
+		let foundItem = state.TendingNow.find(({ Id }: { Id: string }) => Id === currentItemId);
+
+		
+		if(sortedItems) {
+			debugger
+
+			state.TendingNow = sortedItems 
+		} 
+
 		if (foundItem) {
-			sessionStorage.setItem("currentItemId",currentId)
+			sessionStorage.setItem("currentItemId",currentItemId)
 		  	state.Featured = foundItem;
 		} else {
 			// handle case
