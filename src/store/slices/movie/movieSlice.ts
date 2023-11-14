@@ -265,23 +265,33 @@ const movieSlice = createSlice({
   initialState,	
   reducers: {
 	changeMovie: (state, { payload }) => {
-		const {currentItemId,sortedItems} = payload
-		let foundItem = state.TendingNow.find(({ Id }: { Id: string }) => Id === currentItemId);
-
-		
-		if(sortedItems) {
-			debugger
-
-			state.TendingNow = sortedItems 
+		const { currentItemId, sortSliderID } = payload;
+	
+		// Create a copy of the TendingNow array
+		const sortedVideos = [...state.TendingNow].sort((a: any, b: any) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
+	
+		// Sort the array based on Date property
+		if (sortSliderID) {
+		  state.TendingNow = [
+			...sortedVideos.filter(item => item.Id === sortSliderID),
+			...sortedVideos.filter(item => item.Id !== sortSliderID)
+		  ];
 		} 
-
+		// else {
+		//   state.TendingNow = sortedVideos;
+		// }
+	
+		// Set the current item in sessionStorage
+		sessionStorage.setItem("currentItemId", currentItemId);
+	
+		// Set the Featured item
+		const foundItem = state.TendingNow.find(({ Id }: { Id: string }) => Id === currentItemId);
 		if (foundItem) {
-			sessionStorage.setItem("currentItemId",currentItemId)
-		  	state.Featured = foundItem;
+		  state.Featured = foundItem;
 		} else {
-			// handle case
+		  // handle case
 		}
-	},
+	  },
   },
 });
 

@@ -11,9 +11,6 @@ import FeaturedVideoBlock from '../../component/feauteredVideoBlock';
 function HomePage() {
   const { Featured,TendingNow } = useAppSelector((state) => state.movieSlice );
   const dispatch = useAppDispatch()
-  const data = Array.from(TendingNow);
-  const sortedVideos = data.sort((a: any, b: any) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
-  const filteredTendingNow = sortedVideos.slice(0, 50);
 
   function handleChangeMovie(currentItemId:string) {
     dispatch(changeMovie({currentItemId}))
@@ -21,11 +18,7 @@ function HomePage() {
 
   useEffect(() => {
     const currentItemId = sessionStorage.getItem("currentItemId")
-    const sortedItems = Featured
-    ? [...filteredTendingNow.filter(item => item.Id === currentItemId), ...filteredTendingNow.filter(item => item.Id !== currentItemId)]
-    : filteredTendingNow;
-
-    dispatch(changeMovie({currentItemId,sortedItems}))
+    dispatch(changeMovie({currentItemId,sortSliderID:currentItemId}))
   },[])
 
 
@@ -42,7 +35,7 @@ function HomePage() {
       <div className='move_item_container'>
         <p className='title'>Trending Now</p>
         <div className='item_parent'>
-          <SimpleSlider filteredTendingNow={filteredTendingNow} callBack={handleChangeMovie}/>
+          <SimpleSlider filteredTendingNow={TendingNow} callBack={handleChangeMovie}/>
         </div>
       </div>
     </div>
