@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
 import "./styles/styles.scss";
-import MainTitleImg from '../../assets/FeaturedTitleImage.png';
 import { BsFillPlayFill } from 'react-icons/bs';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { TendingNowItemType } from '../../store/slices/movie/type';
 import SimpleSlider from '../../component/slider/simpleSlider';
 import { changeMovie } from '../../store/slices/movie/movieSlice';
 import FeaturedVideoBlock from '../../component/feauteredVideoBlock';
@@ -21,9 +19,6 @@ function HomePage() {
     dispatch(changeMovie({currentItemId,sortSliderID:currentItemId}))
   },[])
 
-
-
-  // console.log(sortedItems,"sortedItems")
   return (
     <div className='home_page'>
       <FeaturedVideoBlock lastFeaturedMovie={Featured}/>
